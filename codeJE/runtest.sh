@@ -13,21 +13,18 @@ DOCOMPARE=1   # Compare AliPhysics and O2 output.
 RUN5=0        # Use Run 5 input.
 CONVSEP=1     # Convert ESD files separately.
 PARALLELISE=0 # Parallelise O2 tasks.
-TWOPRONGSEL=0 # Apply D0 selection cuts.
 DEBUG=0       # Print out more information.
 
 # Default settings
 JSON="$PWD/dpl-config_std.json"
 JSONRUN5="$PWD/dpl-config_run5.json"
 ISMC=0
-MASS=1.8
 TRIGGERSTRINGRUN2=""
 TRIGGERBITRUN3=-1
 NMAX=-1
 
 if [ $CASE -eq 0 ]; then
   INPUTDIR="../twikiinput"
-  MASS=1.0
   STRING="AliESDs_ppK0starToyMC.root"
 fi
 
@@ -48,18 +45,17 @@ fi
 
 if [ $CASE -eq 3 ]; then
   INPUTDIR="/data/Run3data/output"
-  MASS=1.0
   STRING="00*/AliESDs.root"
 fi
 
 if [ $CASE -eq 4 ]; then
   INPUTDIR="/data/Run3data/alice_sim_2018_LHC18a4a2_cent/282099"
-  STRING="001/AliESDs.root"
+  STRING="0*/AliESDs.root"
 fi
 
 if [ $CASE -eq 5 ]; then
   INPUTDIR="/mnt/temp/Run3data_Vit/LHC18a4a2_cent/282341"
-  STRING="001/AliESDs.root"
+  STRING="2*/AliESDs.root"
 fi
 
 #INPUTDIR="/data/Run3data/output" #K0* MC injected
@@ -73,7 +69,7 @@ LISTFILESO2="listrun3.txt"
 LISTFILESO2RUN5="listrun5.txt"
 
 # Output files names
-FILEOUTALI="Vertices2prong-ITS1.root"
+FILEOUTALI="JetRun1.root"
 FILEOUTO2="AnalysisResults.root"
 FILEOUTQA="AnalysisResultsQA.root"
 
@@ -91,15 +87,6 @@ if [ $RUN5 -eq 1 ]; then
   JSON="$JSONRUN5"
 fi
 
-# Enable D0 selection.
-if [ $TWOPRONGSEL -eq 1 ]; then
-  echo -e "\nUsing D0 selection cuts"
-  JSONSEL="${JSON/.json/_sel.json}"
-  cp "$JSON" "$JSONSEL"
-  sed -e "s!\"d_selectionFlagD0\": \"0\"!\"d_selectionFlagD0\": \"1\"!g" "$JSONSEL" > "$JSONSEL.tmp" && mv "$JSONSEL.tmp" "$JSONSEL"
-  sed -e "s!\"d_selectionFlagD0bar\": \"0\"!\"d_selectionFlagD0bar\": \"1\"!g" "$JSONSEL" > "$JSONSEL.tmp" && mv "$JSONSEL.tmp" "$JSONSEL"
-  JSON="$JSONSEL"
-fi
 
 # Convert AliESDs.root to AO2D.root.
 if [ $DOCONVERT -eq 1 ]; then
@@ -150,47 +137,39 @@ EOF
   mv log_o2.log log_o2_qa.log
 fi
 
-# Run the heavy-flavour tasks with AliPhysics.
+# Run the jet tasks with AliPhysics.
 if [ $DORUN1 -eq 1 ]; then
-  [ -f "$LISTFILESALI" ] || { echo "HF tasks ALI: Error: File $LISTFILESALI does not exist."; exit 1; }
-  echo -e "\nRunning the HF tasks with AliPhysics... ($(cat $LISTFILESALI | wc -l) files)"
+  [ -f "$LISTFILESALI" ] || { echo "Jet tasks ALI: Error: File $LISTFILESALI does not exist."; exit 1; }
+  echo -e "\nRunning the Jet tasks with AliPhysics... ($(cat $LISTFILESALI | wc -l) files)"
   #$ENVALI bash ali_batch.sh $LISTFILESALI $JSON $FILEOUTALI # Run the batch script in the ALI environment.
   $ENVALIO2 bash ali_batch.sh $LISTFILESALI $JSON $FILEOUTALI $DEBUG || exit 1 # Run the batch script in the ALI+O2 environment.
 fi
 
 # Run the heavy-flavour tasks with O2.
 if [ $DORUN3 -eq 1 ]; then
-  #LOGFILE="log_o2_hf.log"
-  [ -f "$O2INPUT" ] || { echo "HF tasks O2: Error: File $O2INPUT does not exist."; exit 1; }
-  echo -e "\nRunning the HF tasks with O2... ($(cat $O2INPUT | wc -l) files)"
+  #LOGFILE="log_o2_jet.log"
+  [ -f "$O2INPUT" ] || { echo "Jet tasks O2: Error: File $O2INPUT does not exist."; exit 1; }
+  echo -e "\nRunning the Jet tasks with O2... ($(cat $O2INPUT | wc -l) files)"
   rm -f $FILEOUTO2
   # Option --configuration has priority over --aod-file.
 #  O2ARGS="--shm-segment-size 16000000000 --configuration json://$PWD/dpl-config_std.json --aod-file $AOD3NAME"
   O2ARGS="--shm-segment-size 16000000000 --configuration json://$JSON"
-  O2ARGS_SKIM="$O2ARGS"
-  O2ARGS_CAND="$O2ARGS"
-  O2ARGS_PIDTPC="$O2ARGS"
-  O2ARGS_PIDTOF="$O2ARGS"
-  O2ARGS_SEL="$O2ARGS"
-  O2ARGS_TASK="$O2ARGS"
   O2ARGS_JETFINDER="$O2ARGS"
+  O2ARGS_JETSUBSTRUCTURE="$O2ARGS"
+  O2ARGS_JETFINDERHADRONRECOIL="$O2ARGS"
   if [ $PARALLELISE -eq 1 ]; then
     NPROC=3
     echo "Parallelisation ON ($NPROC)"
-    O2ARGS_SKIM="$O2ARGS_SKIM --pipeline hf-produce-sel-track:$NPROC,hf-track-index-skims-creator:$NPROC"
-    O2ARGS_CAND="$O2ARGS_CAND --pipeline hf-cand-creator-2prong:$NPROC,hf-cand-creator-2prong-expressions:$NPROC"
-    O2ARGS_TASK="$O2ARGS_TASK --pipeline hf-task-d0:$NPROC"
-    O2ARGS_JETFINDER="$O2ARGS_JETFINDER --pipeline jet-finder-hf:$NPROC"
+    O2ARGS_JETFINDER="$O2ARGS_JETFINDER --pipeline jet-finder:$NPROC"
+    O2ARGS_SUBSTRUCTURE="$O2ARGS_SUBSTRUCTURE --pipeline jet-substructure:$NPROC"
+    O2ARGS_JETFINDERHADRONRECOIL="$O2ARGS_JETFINDERHADRONRECOIL --pipeline jet-finder-hadron-recoil:$NPROC"
   fi
-  O2EXEC_SKIM="o2-analysis-hf-track-index-skims-creator $O2ARGS_SKIM"
-  O2EXEC_CAND="o2-analysis-hf-candidate-creator-2prong $O2ARGS_CAND"
-  O2EXEC_PIDTPC="o2-analysis-pid-tpc $O2ARGS_PIDTPC"
-  O2EXEC_PIDTOF="o2-analysis-pid-tof $O2ARGS_PIDTOF"
-  O2EXEC_SEL="o2-analysis-hf-d0-candidate-selector $O2ARGS_SEL"
-  O2EXEC_TASK="o2-analysis-hf-task-d0 $O2ARGS_TASK"
-  O2EXEC_JETFINDER="o2-analysis-jet-finder-hf $O2ARGS_JETFINDER"
-  O2EXEC="$O2EXEC_SKIM | $O2EXEC_PIDTPC | $O2EXEC_PIDTOF | $O2EXEC_CAND | $O2EXEC_SEL | $O2EXEC_TASK | $O2EXEC_JETFINDER -b"
-  O2SCRIPT="script_o2_hf.sh"
+  O2EXEC_JETFINDER="o2-analysis-jet-finder $O2ARGS_JETFINDER"
+  O2EXEC_JETSUBSTRUCTURE="o2-analysis-jet-substructure $O2ARGS_JETSUBSTRUCTURE"
+  O2EXEC_JETFINDERHADRONRECOIL="o2-analysis-jet-finder-hadron-recoil $O2ARGS_JETFINDERHADRONRECOIL"
+  #O2EXEC="$O2EXEC_SKIM | $O2EXEC_PIDTPC | $O2EXEC_PIDTOF | $O2EXEC_CAND | $O2EXEC_SEL | $O2EXEC_TASK -b"
+  O2EXEC="$O2EXEC_JETFINDER | $O2EXEC_JETSUBSTRUCTURE | $O2EXEC_JETFINDERHADRONRECOIL -b"
+  O2SCRIPT="script_o2_jet.sh"
   cat << EOF > $O2SCRIPT # Create a temporary script with the full O2 commands.
 #!/bin/bash
 $O2EXEC
@@ -199,14 +178,11 @@ EOF
   #grep WARN $LOGFILE | sort -u
   $ENVO2 bash o2_batch.sh $O2INPUT $JSON $O2SCRIPT $DEBUG || exit 1 # Run the batch script in the O2 environment.
   rm -f $O2SCRIPT
-  rm -rf output_o2_hf
-  mv output_o2 output_o2_hf
-  mv log_o2.log log_o2_hf.log
+  rm -rf output_o2_jet
+  mv output_o2 output_o2_jet
+  mv log_o2.log log_o2_jet.log
 fi
 
-if [ $TWOPRONGSEL -eq 1 ]; then
-  rm "$JSONSEL"
-fi
 
 # Compare AliPhysics and O2 output.
 if [ $DOCOMPARE -eq 1 ]; then
@@ -217,7 +193,7 @@ if [ $DOCOMPARE -eq 1 ]; then
     [ -f "$file" ] || { echo "Error: File $file does not exist."; ok=0; }
   done
   [ $ok -ne 1 ] && exit 1
-  $ENVALI $CMDROOT "Compare.C(\"$FILEOUTO2\",\"$FILEOUTALI\", $MASS)" > $LOGFILE 2>&1 || { echo "Error"; exit 1; }
+  $ENVALI $CMDROOT "Compare.C(\"$FILEOUTO2\",\"$FILEOUTALI\")" > $LOGFILE 2>&1 || { echo "Error"; exit 1; }
 fi
 
 echo -e "\nDone"

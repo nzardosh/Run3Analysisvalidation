@@ -1,0 +1,24 @@
+{
+    "internal-dpl-clock": "",
+    "internal-dpl-aod-reader": {
+        "aod-file": "@listrun3.txt",
+        "start-value-enumeration": "0",
+        "end-value-enumeration": "-1",
+        "step-value-enumeration": "1"
+    },
+    "jet-finder": {
+    },
+    "jet-substructure": {
+	"f_jetPtMin": "10.0",
+	"d_zCut": "0.1",
+        "d_beta": "0.0",
+        "d_jetR": "0.4"
+    },
+    "jet-finder-hadron-recoil": {
+	"f_trackTTMin": "8.0",
+	"f_trackTTMax": "9.0",
+        "f_recoilWindow": "0.6"
+    },
+    "internal-dpl-aod-writer": {
+    }
+}

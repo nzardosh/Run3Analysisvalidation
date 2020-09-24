@@ -12,8 +12,6 @@
 #include "AliAODRecoDecayHF3Prong.h"
 #include "AliVertexerTracks.h"
 #include "ReadJson.C"
-#include "AliFJWrapper.h"
-#include "FJ_includes.h"
 #endif
 
 Int_t kbitDplus = 0;
@@ -413,11 +411,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
   TH1F* hCovPVXX = new TH1F("hCovPVXX", "XX element of PV cov. matrix", 100, 0., 1.0e-4);
   TH1F* hCovSVXX = new TH1F("hCovSVXX", "XX element of SV cov. matrix", 100, 0., 0.2);
 
-  TH1F* hjetpt = new TH1F("hjetpt", " ; pt jet (#GeV) ; Entries", 100, 0., 100.);
-  TH1F* hjetzg = new TH1F("hjetzg", " ; jet zg ; Entries", 100, 0., 100.);
-  TH1F* hjetrg = new TH1F("hjetrrg", " ; jet rg ; Entries", 100, 0., 100.);
-  TH1F* hjetnsd = new TH1F("hjetnsd", " ; jet nsd ; Entries", 100, 0., 100.);
-
   AliESDtrackCuts* esdTrackCuts = new AliESDtrackCuts("AliESDtrackCuts", "default");
   esdTrackCuts->SetPtRange(ptmintrack, 1.e10);
   esdTrackCuts->SetEtaRange(-0.8, +0.8);
@@ -467,7 +460,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
 
     Double_t fBzkG = (Double_t)esd->GetMagneticField();
 
-    
     // Apply single track cuts and flag them
     UChar_t* status = new UChar_t[totTracks];
     for (Int_t iTrack = 0; iTrack < totTracks; iTrack++) {
@@ -556,81 +548,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
           hCovPVXX->Fill(covMatrix[0]);
           the2Prong->GetSecondaryVtx()->GetCovMatrix(covMatrix);
           hCovSVXX->Fill(covMatrix[0]);
-
-	  AliFJWrapper *fFastJetWrapper;
-	  fFastJetWrapper = new AliFJWrapper("fFastJetWrapper","fFastJetWrapper");
-	  fFastJetWrapper->Clear();
-	  fFastJetWrapper->SetR(0.4); 
-	  fFastJetWrapper->SetAlgorithm(fastjet::JetAlgorithm::antikt_algorithm);
-	  fFastJetWrapper->SetRecombScheme(fastjet::RecombinationScheme::E_scheme);
-	  fFastJetWrapper->SetStrategy(fastjet::Strategy::Best);
-	  fFastJetWrapper->SetGhostArea(0.005); 
-	  fFastJetWrapper->SetAreaType(fastjet::AreaType::passive_area);
-
-
-	  bool isHFJet=false;
-	  fFastJetWrapper->Clear();
-	  for (Int_t iTrack = 0; iTrack < totTracks; iTrack++) {
-	    AliESDtrack* track = esd->GetTrack(iTrack);
-	    if (track->Pt() >= 0.15 || TMath::Abs(track->Eta()) < 0.9){
-	      if (iTrack==iNegTrack_0 || iTrack==iPosTrack_0) continue;
-	      fFastJetWrapper->AddInputVector(track->Px(), track->Py(), track->Pz(), TMath::Sqrt(track->P()*track->P()+0.13957*0.13957),iTrack+2);
-	    }
-	  }
-	  fFastJetWrapper->AddInputVector(the2Prong->Px(), the2Prong->Py(), the2Prong->Pz(), the2Prong->ED0(),1);
-
-	  fFastJetWrapper->Run();
-	  std::vector<fastjet::PseudoJet> jets = fFastJetWrapper->GetInclusiveJets();
-	  for (Int_t ijet=0; ijet<jets.size(); ijet++){
-	    isHFJet=false;
-	    fastjet::PseudoJet jet = jets[ijet];
-	    if (jet.pt() <= 0.15 || jet.perp() > 1000.0 || TMath::Abs(jet.eta()) >= 0.5) continue;
-	    std::vector<fastjet::PseudoJet> constituents(fFastJetWrapper->GetJetConstituents(ijet));
-	    for (Int_t iconstituent=0; iconstituent<constituents.size(); iconstituent++){
-	      if (constituents[iconstituent].user_index()==1) isHFJet=true;
-	      break;
-	    }
-	    if(!isHFJet) continue;
-	    hjetpt->Fill(jet.pt());
-	    fastjet::JetDefinition subJetDef(fastjet::JetAlgorithm::cambridge_algorithm , 0.4*2.5,fastjet::RecombinationScheme::E_scheme, fastjet::Best);
-	    try{
-	      fastjet::ClusterSequence reclusterSeq(constituents, subJetDef);
-	      std::vector<fastjet::PseudoJet> reclusteredJet =  reclusterSeq.inclusive_jets(0.0);
-	      reclusteredJet = sorted_by_pt(reclusteredJet);
-         
-	      fastjet::PseudoJet daughterSubJet = reclusteredJet[0];
-	      fastjet::PseudoJet parentSubJet1; 
-	      fastjet::PseudoJet parentSubJet2;
-
-	      Float_t zg=-1.0,rg=-1.0;
-	      Int_t nsd=0;
-	      bool softDropped=false;
-	      bool isHFSubJet=false;
-	      std::vector<fastjet::PseudoJet> constituentsSubJet;
-	      while(daughterSubJet.has_parents(parentSubJet1,parentSubJet2)){
-		isHFSubJet=false;
-		constituentsSubJet=parentSubJet1.constituents();
-		for (Int_t iconstituent=0; iconstituent<constituentsSubJet.size(); iconstituent++){
-		  if (constituentsSubJet[iconstituent].user_index()==1) isHFSubJet=true;
-		}
-		if (isHFSubJet==false) std::swap(parentSubJet1,parentSubJet2);
-		zg=parentSubJet2.perp()/(parentSubJet1.perp()+parentSubJet2.perp());
-		rg=parentSubJet1.delta_R(parentSubJet2);
-
-		if (zg >= 0.1*TMath::Power(rg/0.4,0.0)){
-		  if(!softDropped){
-		    hjetzg->Fill(zg);
-		    hjetrg->Fill(rg);
-		    softDropped=true;
-		  }
-		  nsd++;
-		}
-		daughterSubJet=parentSubJet1;
-	      }
-	      hjetnsd->Fill(nsd);
-	    }catch (fastjet::Error) {}
-	  }
-	  delete fFastJetWrapper;
         }
         delete the2Prong;
         delete vertexAOD;
@@ -753,11 +670,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
   hDecLenXYErr->Write();
   hCovPVXX->Write();
   hCovSVXX->Write();
-
-  hjetpt->Write();
-  hjetzg->Write();
-  hjetrg->Write();
-  hjetnsd->Write();
 
   fout->Close();
   return 0;

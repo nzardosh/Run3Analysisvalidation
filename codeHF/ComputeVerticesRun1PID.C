@@ -12,8 +12,16 @@
 #include "AliAODRecoDecayHF3Prong.h"
 #include "AliVertexerTracks.h"
 #include "ReadJson.C"
-#include "AliFJWrapper.h"
-#include "FJ_includes.h"
+
+#include "common.h"
+
+// O2 includes
+#include "PID/BetheBloch.h"
+#include "PID/TPCReso.h"
+#include "PID/PIDTPC.h"
+
+using namespace o2::pid;
+
 #endif
 
 Int_t kbitDplus = 0;
@@ -29,30 +37,30 @@ const Int_t npTBins = 25;
 const Int_t nCutVars = 11;
 //m     dca   cost* ptk  ptpi  d0k            d0pi         d0d0     cosp cosxy normdxy
 Double_t fCuts[npTBins][nCutVars] = {{0.400, 350. * 1E-4, 0.8, 0.5, 0.5, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.80, 0., 0.},   /* pt<0.5*/
-                                     {0.400, 350. * 1E-4, 0.8, 0.5, 0.5, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.80, 0., 0.},   /* 0.5<pt<1*/
-                                     {0.400, 300. * 1E-4, 0.8, 0.4, 0.4, 1000. * 1E-4, 1000. * 1E-4, -25000. * 1E-8, 0.80, 0., 0.},  /* 1<pt<1.5 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.4, 0.4, 1000. * 1E-4, 1000. * 1E-4, -25000. * 1E-8, 0.80, 0., 0.},  /* 1.5<pt<2 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -20000. * 1E-8, 0.90, 0., 0.},  /* 2<pt<2.5 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -20000. * 1E-8, 0.90, 0., 0.},  /* 2.5<pt<3 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -12000. * 1E-8, 0.85, 0., 0.},  /* 3<pt<3.5 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -12000. * 1E-8, 0.85, 0., 0.},  /* 3.5<pt<4 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 4<pt<4.5 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 4.5<pt<5 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 5<pt<5.5 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 5.5<pt<6 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 6<pt<6.5 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 6.5<pt<7 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -7000. * 1E-8, 0.85, 0., 0.},   /* 7<pt<7.5 */
-                                     {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -7000. * 1E-8, 0.85, 0., 0.},   /* 7.5<pt<8 */
-                                     {0.400, 300. * 1E-4, 0.9, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.85, 0., 0.},   /* 8<pt<9 */
-                                     {0.400, 300. * 1E-4, 0.9, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.85, 0., 0.},   /* 9<pt<10 */
-                                     {0.400, 300. * 1E-4, 0.9, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.85, 0., 0.},   /* 10<pt<12 */
-                                     {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 10000. * 1E-8, 0.85, 0., 0.},   /* 12<pt<16 */
-                                     {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.85, 0., 0.},  /* 16<pt<20 */
-                                     {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.85, 0., 0.},  /* 20<pt<24 */
-                                     {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.85, 0., 0.},  /* 24<pt<36 */
-                                     {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.85, 0., 0.},  /* 36<pt<50 */
-                                     {0.400, 300. * 1E-4, 1.0, 0.6, 0.6, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.80, 0., 0.}}; /* pt>50 */
+                                            {0.400, 350. * 1E-4, 0.8, 0.5, 0.5, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.80, 0., 0.},   /* 0.5<pt<1*/
+                                            {0.400, 300. * 1E-4, 0.8, 0.4, 0.4, 1000. * 1E-4, 1000. * 1E-4, -25000. * 1E-8, 0.80, 0., 0.},  /* 1<pt<1.5 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.4, 0.4, 1000. * 1E-4, 1000. * 1E-4, -25000. * 1E-8, 0.80, 0., 0.},  /* 1.5<pt<2 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -20000. * 1E-8, 0.90, 0., 0.},  /* 2<pt<2.5 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -20000. * 1E-8, 0.90, 0., 0.},  /* 2.5<pt<3 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -12000. * 1E-8, 0.85, 0., 0.},  /* 3<pt<3.5 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -12000. * 1E-8, 0.85, 0., 0.},  /* 3.5<pt<4 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 4<pt<4.5 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 4.5<pt<5 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 5<pt<5.5 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 5.5<pt<6 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 6<pt<6.5 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -8000. * 1E-8, 0.85, 0., 0.},   /* 6.5<pt<7 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -7000. * 1E-8, 0.85, 0., 0.},   /* 7<pt<7.5 */
+                                            {0.400, 300. * 1E-4, 0.8, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -7000. * 1E-8, 0.85, 0., 0.},   /* 7.5<pt<8 */
+                                            {0.400, 300. * 1E-4, 0.9, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.85, 0., 0.},   /* 8<pt<9 */
+                                            {0.400, 300. * 1E-4, 0.9, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.85, 0., 0.},   /* 9<pt<10 */
+                                            {0.400, 300. * 1E-4, 0.9, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, -5000. * 1E-8, 0.85, 0., 0.},   /* 10<pt<12 */
+                                            {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 10000. * 1E-8, 0.85, 0., 0.},   /* 12<pt<16 */
+                                            {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.85, 0., 0.},  /* 16<pt<20 */
+                                            {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.85, 0., 0.},  /* 20<pt<24 */
+                                            {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.85, 0., 0.},  /* 24<pt<36 */
+                                            {0.400, 300. * 1E-4, 1.0, 0.7, 0.7, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.85, 0., 0.},  /* 36<pt<50 */
+                                            {0.400, 300. * 1E-4, 1.0, 0.6, 0.6, 1000. * 1E-4, 1000. * 1E-4, 999999. * 1E-8, 0.80, 0., 0.}}; /* pt>50 */
 
 Int_t GetpTBin(Double_t candpT)
 {
@@ -122,8 +130,19 @@ Bool_t SingleTrkCutsSimple(AliESDtrack* trk, Int_t minclutpc, int ptmintrack, do
   return sel_track;
 }
 
-Int_t TwoProngSelectionCuts(AliAODRecoDecayHF2Prong* cand, Double_t candpTMin, Double_t candpTMax)
+std::pair<Int_t, Int_t> TwoProngTopolSelection(AliAODRecoDecayHF2Prong* cand, TString jsonconfig = "dpl-config_std.json")
 {
+
+  Double_t candpTMin,candpTMax;
+  // read configuration from json file
+  if (jsonconfig != "" && gSystem->Exec(Form("ls %s > /dev/null", jsonconfig.Data())) == 0) {
+    printf("Read configuration from JSON file\n");
+    candpTMin = GetJsonFloat("dpl-config_std.json", "d_pTCandMin");
+    printf("Min pt 2prong cand = %f\n", candpTMin);
+    candpTMax = GetJsonInteger("dpl-config_std.json", "d_pTCandMax");
+    printf("Max pt 2prong cand = %f\n", candpTMax);
+  }
+
 
   bool isD0 = true;
   bool isD0bar = true;
@@ -138,7 +157,7 @@ Int_t TwoProngSelectionCuts(AliAODRecoDecayHF2Prong* cand, Double_t candpTMin, D
   Double_t decayLengthCut = TMath::Min((cand->P() * 0.0066) + 0.01, 0.06);
   if (TMath::Abs(cand->Normalizedd0Prong(0)) < 0.5 || TMath::Abs(cand->Normalizedd0Prong(1)) < 0.5) return 0;
   if (cand->DecayLength() * cand->DecayLength() < decayLengthCut * decayLengthCut) return 0;
-  // if (cand->NormalizedDecayLength() * cand->NormalizedDecayLength() < 1.0) return 0;
+  if (cand->NormalizedDecayLength() * cand->NormalizedDecayLength() < 1.0) return 0;
   if (TMath::Abs(cand->InvMassD0()-fMassDzero) > fCuts[pTBin][0] ) isD0=false;
   if (TMath::Abs(cand->InvMassD0bar()-fMassDzero) > fCuts[pTBin][0] ) isD0bar=false;
   if (!isD0 && !isD0bar) return 0;
@@ -158,16 +177,169 @@ Int_t TwoProngSelectionCuts(AliAODRecoDecayHF2Prong* cand, Double_t candpTMin, D
   if (!isD0 && !isD0bar) return 0;
 
 
+  std::pair<Int_t, Int_t> returnValue;
+  
   Int_t returnValue=0;
-  if(isD0) returnValue+=1;
-  if(isD0bar) returnValue+=2;
+  if(isD0) returnValue.first=1;
+  else returnValue.first=0;
+  if(isD0bar) returnValue.second=1;
+  else returnValue.second=0;
   return returnValue;
-
-
 
 }
 
-AliESDVertex* ReconstructSecondaryVertex(AliVertexerTracks* vt, TObjArray* trkArray, AliESDVertex* primvtx, double rmax)
+Bool_t validTPCPID(AliESDtrack track, TString jsonconfig = "dpl-config_std.json"){
+
+  Double_t pidTPCMinpT,pidTPCMaxpT;
+  if (jsonconfig != "" && gSystem->Exec(Form("ls %s > /dev/null", jsonconfig.Data())) == 0) {
+    printf("Read configuration from JSON file\n");
+    pidTPCMinpT = GetJsonFloat("dpl-config_std.json", "d_pidTPCMinpT");
+    printf("TPC pT min threshold = %f\n", pidTPCMinpT);
+    pidTPCMaxpT = GetJsonInteger("dpl-config_std.json", "d_pidTPCMaxpT");
+    printf("TPC pT max threshold = %f\n", pidTPCMaxpT);
+  }
+
+  if (track->Pt() >= pidTPCMinpT && track->Pt() < pidTPCMaxpT) return kTRUE;
+  else return kFALSE;
+
+}
+
+Bool_t validTOFPID(AliESDtrack track, TString jsonconfig = "dpl-config_std.json"){
+
+  Double_t pidTOFMinpT,pidTOFMaxpT;
+  if (jsonconfig != "" && gSystem->Exec(Form("ls %s > /dev/null", jsonconfig.Data())) == 0) {
+    printf("Read configuration from JSON file\n");
+    pidTOFMinpT = GetJsonFloat("dpl-config_std.json", "d_pidTOFMinpT");
+    printf("TOF pT min threshold = %f\n", pidTOFMinpT);
+    pidTOFMaxpT = GetJsonInteger("dpl-config_std.json", "d_pidTOFMaxpT");
+    printf("TOF pT max threshold = %f\n", pidTOFMaxpT);
+  }
+
+  if (track->Pt() >= pidTOFMinpT && track->Pt() < pidTOFMaxpT) return kTRUE;
+  else return kFALSE;
+
+}
+
+template <typename T>
+Double_t nsigmaTPC(&T respTPC, AliESDtrack track, int pid){
+
+  const AliExternalTrackParam* trackParam = track->GetTPCInnerParam();
+  const float trackP = (trackParam ? trackParam->GetP() : 0);
+  respTPC.UpdateTrack(trackP, track->GetTPCsignal(), (track->GetTPCSharedMap()).CountBits());
+  return respTPC.GetSeparation(pid); //2 for pion and 3 for kaon
+}
+
+template <typename T>
+Double_t nsigmaTOF(&T respTOF, AliESDtrack track, int pid){
+
+  const float P = track->P();
+  const float length = track->GetIntegratedLength();
+  // Speed of ligth in TOF units
+  const Float_t cTOF = 0.029979246f;
+  const float time = track->GetTOFsignal();
+  const Float_t expB = (length / respTOF.GetExpectedSignal(track, pid) / cTOF);
+  const Float_t TOFExpP = AliPID::ParticleMass(pid) * expB * cTOF / TMath::Sqrt(1. - (expB * expB));
+  respTOF.UpdateTrack(P, TOFExpP / cToF, length, time);
+  return respTOF.GetSeparation(pid); //2 for pion and 3 for kaon
+}
+
+template <typename T1, typename T2>
+Int_t ProngPID(&T1 respTPC, &T2 respTOF, AliESDtrack track, int pid, TString jsonconfig = "dpl-config_std.json"){
+
+  Double_t nSigmaTPCmin,nSigmaTPCCombinedmin,nSigmaTOFmin,nSigmaTOFCombinedmin;
+  // read configuration from json file
+  if (jsonconfig != "" && gSystem->Exec(Form("ls %s > /dev/null", jsonconfig.Data())) == 0) {
+    printf("Read configuration from JSON file\n");
+    nSigmaTPCmin = GetJsonFloat("dpl-config_std.json", "d_nSigmaTPC");
+    printf("TPC nsigma threshold = %f\n", nSigmaTPCmin);
+    nSigmaTPCCombinedmin = GetJsonInteger("dpl-config_std.json", "d_nSigmaTPCCombined");
+    printf("combined TPC nsigma threshold = %f\n", nSigmaTPCCombinedmin);
+    nSigmaTOFmin = GetJsonFloat("dpl-config_std.json", "d_nSigmaTOF");
+    printf("TOF nsigma threshold = %f\n", nSigmaTOFmin);
+    nSigmaTOFCombinedmin = GetJsonInteger("dpl-config_std.json", "d_nSigmaTOFCombined");
+    printf("combined TOF nsigma threshold = %f\n", nSigmaTOFCombinedmin);
+  }
+
+
+  Int_t statusTPC= -1;
+  Int_t statusTOF= -1;
+  
+  Double_t nSigmaTPC = nsigmaTPC(respTPC, track, pid);
+  Double_t nSigmaTOF = nsigmaTOF(respTOF, track, pid);
+
+  if (validTPCPID(track)){
+    if(nSigmaTPC > nSigmaTPCmin){
+      if(nSigmaTPC > nSigmaTPCCombinedmin) statusTPC = 0; //rejected by PID    
+      else statusTPC = 1; //potentially accepted PID
+    }
+    else statusTPC = 2; //accepted by PID
+  }
+  else statusTPC = -1; //no PID info
+
+  if (validTOFPID(track)){
+    if(nSigmaTOF > nSigmaTOFmin){
+      if(nSigmaTOF > nSigmaTOFCombinedmin) statusTOF = 0; //rejected by PID    
+      else statusTOF = 1; //potentially accepted PID
+    }
+    else statusTOF = 2; //accepted by PID
+  }
+  else statusTOF = -1; //no PID info
+
+  if (statusTPC == 2 || statusTOF == 2) return 1; //what if we have 2 && 0 ?
+  else if (statusTPC == 1 && statusTOF == 1) return 1;
+  else if (statusTPC == 0 || statusTOF == 0) return 0;
+  else return -1;
+
+}
+
+std::pair<Int_t,Int_t> TwoProngPIDSelection(&T1 respTPC, &T2 respTOF, AliESDtrack trackp0, AliESDtrack trackn0){
+
+  Int_t pidD0, pidD0bar, piPlus, piMinus, kPlus, kMinus;
+  pidD0 = -1;
+  pidD0bar = -1;
+  piPlus = -1;
+  piMinus = -1;
+  kPlus = -1;
+  kMinus = -1;
+
+  piPlus = ProngPID(respTPC, respTOF, trackp0, 2);
+  kMinus = ProngPID(respTPC, respTOF, trackn0, 3);
+  piMinus = ProngPID(respTPC, respTOF, trackn0, 2);
+  kPlus = ProngPID(respTPC, respTOF, trackp0, 3);
+
+  if (piPlus == 0 || kMinus == 0 || piMinus == 1 || kPlus == 1)
+    pidD0 = 0; //exclude D0
+  if (piPlus == 1 || kMinus == 1 || piMinus == 0 || kPlus == 0)
+    pidD0bar = 0; //exclude D0bar
+  if (piPlus == 1 && kMinus == 1)
+    pidD0 = 1; //accept D0
+  if (piMinus == 1 && kPlus == 1)
+    pidD0bar = 1; //accept D0bar
+
+  std::pair<Int_t,Int_t> returnValue;
+  returnValue.first=pidD0;
+  returnValue.second=pidD0bar;
+  return returnValue;
+}
+
+
+Int_t TwoProngSelection(AliAODRecoDecayHF2Prong* cand, &T1 respTPC, &T2 respTOF, AliESDtrack trackp0, AliESDtrack trackn0){
+
+  Int_t statusD0,statusD0bar;
+  std::pair<Int_t,Int_t> statusTopol = TwoProngSelectionCuts(cand);
+  std::pair<Int_t,Int_t> statusPID = TwoProngPIDSelection(respTPC,respTOF,trackp0,trackn0);
+
+  if ((statusPID.first == -1 || statusPID.first == 1) && statusTopol.first == 1) statusD0=1;
+  else statusD0=0;
+  if ((statusPID.second == -1 || statusPID.second == 1) && statusTopol.second == 1) statusD0bar=1;
+  else statusD0bar=0;
+  
+  return statusD0+(statusD0bar*2);
+
+}
+
+
+AliESDVertex* ReconstructSecondaryVertex(AliVertexerTracks* vt, TObjArray* trkArray, AliESDVertex* primvtx)
 {
 
   vt->SetVtxStart(primvtx);
@@ -176,7 +348,7 @@ AliESDVertex* ReconstructSecondaryVertex(AliVertexerTracks* vt, TObjArray* trkAr
   if (trkv->GetNContributors() != trkArray->GetEntriesFast())
     return 0x0;
   Double_t vertRadius2 = trkv->GetX() * trkv->GetX() + trkv->GetY() * trkv->GetY();
-  if(vertRadius2>rmax*rmax) return 0x0;
+  //FIXME if(vertRadius2>8.) return 0x0;
   return trkv;
 }
 
@@ -356,67 +528,56 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
 
   int minncluTPC = 50;
   float dcatoprimxymin = 0.;
-  Double_t candpTMin,candpTMax, d_maxr;
-  Int_t selectD0, selectD0bar;
   // read configuration from json file
   if (jsonconfig != "" && gSystem->Exec(Form("ls %s > /dev/null", jsonconfig.Data())) == 0) {
     printf("Read configuration from JSON file\n");
-    selectD0 = GetJsonInteger(jsonconfig.Data(), "d_selectionFlagD0");
-    selectD0bar = GetJsonInteger(jsonconfig.Data(), "d_selectionFlagD0bar");
-    printf("D0 cuts: %d, D0bar cuts: %d\n", selectD0, selectD0bar);
-    ptmintrack = GetJsonFloat(jsonconfig.Data(), "ptmintrack");
+    ptmintrack = GetJsonFloat("dpl-config_std.json", "ptmintrack");
     printf("Min pt track = %f\n", ptmintrack);
-    do3Prongs = GetJsonInteger(jsonconfig.Data(), "do3prong");
+    do3Prongs = GetJsonInteger("dpl-config_std.json", "do3prong");
     printf("do3prong     = %d\n", do3Prongs);
-    minncluTPC = GetJsonInteger(jsonconfig.Data(), "d_tpcnclsfound");
+    minncluTPC = GetJsonInteger("dpl-config_std.json", "d_tpcnclsfound");
     printf("minncluTPC   = %d\n", minncluTPC);
-    dcatoprimxymin = GetJsonFloat(jsonconfig.Data(), "dcatoprimxymin");
+    dcatoprimxymin = GetJsonFloat("dpl-config_std.json", "dcatoprimxymin");
     printf("dcatoprimxymin   = %f\n", dcatoprimxymin);
-    printf("Read configuration from JSON file\n");
-    candpTMin = GetJsonFloat(jsonconfig.Data(), "d_pTCandMin");
-    printf("Min pt 2prong cand = %f\n", candpTMin);
-    candpTMax = GetJsonInteger(jsonconfig.Data(), "d_pTCandMax");
-    printf("Max pt 2prong cand = %f\n", candpTMax);
-    d_maxr = GetJsonFloat(jsonconfig.Data(), ", d_maxr");
-    printf("Max DCA radius = %f\n", d_maxr);
   }
 
+  auto respTPC = tpc::Response();
+  // Downloading param from ccdb
+  gSystem->Exec("o2-ccdb-downloadccdbfile -p Analysis/PID/TPC/BetheBloch -d /tmp/ -t -1");
+  gSystem->Exec("o2-ccdb-downloadccdbfile -p Analysis/PID/TPC/TPCReso -d /tmp/ -t -1");
+  // Loading param
+  respTPC.LoadParamFromFile("/tmp/Analysis/PID/TPC/BetheBloch/snapshot.root", "ccdb_object", DetectorResponse::kSignal);
+  respTPC.LoadParamFromFile("/tmp/Analysis/PID/TPC/TPCReso/snapshot.root", "ccdb_object", DetectorResponse::kSigma);
+
+  auto respTOF = tof::Response();
+  // Downloading param from ccdb
+  gSystem->Exec("o2-ccdb-downloadccdbfile -p Analysis/PID/TOF/TOFReso -d /tmp/ -t -1");
+  // Loading param
+  respTOF.LoadParamFromFile("/tmp/Analysis/PID/TOF/TOFReso/snapshot.root", "ccdb_object", DetectorResponse::kSigma);
+
   TH1F* hpt_nocuts = new TH1F("hpt_nocuts", " ; pt tracks (#GeV) ; Entries", 100, 0, 10.);
-  TH1F* htgl_nocuts = new TH1F("htgl_nocuts", "tgl tracks (#GeV)", 100, -5., 5.);
+  TH1F* htgl_nocuts = new TH1F("htgl_nocuts", "tgl tracks (#GeV)", 100, 0., 10.);
   TH1F* hpt_cuts = new TH1F("hpt_cuts", " ; pt tracks (#GeV) ; Entries", 100, 0, 10.);
   TH1F* hdcatoprimxy_cuts = new TH1F("hdcatoprimxy_cuts", "dca xy to prim. vtx (cm)", 100, -1.0, 1.0);
-  TH1F* htgl_cuts = new TH1F("htgl_cuts", "tgl tracks (#GeV)", 100, -5., 5.);
-  TH1F* hvx = new TH1F("hvx", " Secondary vertex ; X vertex (cm) ; Entries", 1000, -2.0, 2.0);
-  TH1F* hvy = new TH1F("hvy", " Secondary vertex ; Y vertex (cm) ; Entries", 1000, -2.0, 2.0);
-  TH1F* hvz = new TH1F("hvz", " Secondary vertex ; Z vertex (cm) ; Entries", 1000, -20.0, 20.0);
-  TH1F* hvx3 = new TH1F("hvx3", " Secondary vertex 3prong ; X vertex (cm) ; Entries", 1000, -2.0, 2.0);
-  TH1F* hvy3 = new TH1F("hvy3", " Secondary vertex 3prong ; Y vertex (cm) ; Entries", 1000, -2.0, 2.0);
-  TH1F* hvz3 = new TH1F("hvz3", " Secondary vertex 3prong ; Z vertex (cm) ; Entries", 1000, -20.0, 20.0);
-  TH1F* hitsmap = new TH1F("hitsmap", "hitsmap_cuts", 64, -0.5, 63.5);
+  TH1F* htgl_cuts = new TH1F("htgl_cuts", "tgl tracks (#GeV)", 100, 0., 10.);
+  TH1F* hvx = new TH1F("hvx", " Secondary vertex ; X vertex (cm) ; Entries", 100, -0.1, 0.1);
+  TH1F* hvy = new TH1F("hvy", " Secondary vertex ; Y vertex (cm) ; Entries", 100, -0.1, 0.1);
+  TH1F* hvz = new TH1F("hvz", " Secondary vertex ; Z vertex (cm) ; Entries", 100, -0.1, 0.1);
+  TH1F* hitsmap = new TH1F("hitsmap", "hitsmap_cuts", 100, 0., 100.);
 
-  TH1F* hvertexx = new TH1F("hvertexx", " Primary vertex ; X vertex (cm) ; Entries", 100, -0.5, 0.5);
-  TH1F* hvertexy = new TH1F("hvertexy", " Primary vertex ; Y vertex (cm) ; Entries", 100, -0.5, 0.5);
-  TH1F* hvertexz = new TH1F("hvertexz", " Primary vertex ; Z vertex (cm) ; Entries", 100, -20.0, 20.0);
+  TH1F* hvertexx = new TH1F("hvertexx", " Primary vertex ; X vertex (cm) ; Entries", 100, -10.0, 10.0);
+  TH1F* hvertexy = new TH1F("hvertexy", " Primary vertex ; Y vertex (cm) ; Entries", 100, -10.0, 10.0);
+  TH1F* hvertexz = new TH1F("hvertexz", " Primary vertex ; Z vertex (cm) ; Entries", 100, -10.0, 10.0);
 
-  TH1F* hdecayxyz = new TH1F("hdecayxyz", "hdecayxyz", 200, 0., 2.0);
-  TH1F* hdecayxy = new TH1F("hdecayxy", "hdecayxy", 200, 0., 2.0);
+  TH1F* hdecayxyz = new TH1F("hdecayxyz", "hdecayxyz", 100, 0., 1.0);
+  TH1F* hdecayxy = new TH1F("hdecayxy", "hdecayxy", 100, 0., 1.0);
   TH1F* hmass0 = new TH1F("hmass0", "; Inv Mass (GeV/c^{2})", 500, 0, 5.0);
-  TH1F* hmassP = new TH1F("hmassP", "; Inv Mass (GeV/c^{2})", 500, 1.6, 2.1);
+  TH1F* hmassP = new TH1F("hmassP", "; Inv Mass (GeV/c^{2})", 500, 0, 5.0);
   TH1F* hptD0 = new TH1F("hptD0", " ; pt D0 (#GeV) ; Entries", 100, 0, 10.);
   TH1F* hptprong0 = new TH1F("hptprong0", " ; pt prong0 (#GeV) ; Entries", 100, 0, 10.);
   TH1F* hptprong1 = new TH1F("hptprong1", " ; pt prong1 (#GeV) ; Entries", 100, 0, 10.);
   TH1F* hd0 = new TH1F("hd0", "dca xy to prim. vertex (cm)", 100, -1.0, 1.0);
-  TH1F* hd0d0 = new TH1F("hd0d0", "product of dca xy to prim. vertex (cm^{2})", 500, -1.0, 1.0);
-  TH1F* hImpParErr = new TH1F("hImpParErr", "impact parameter error", 100, -1.0, 1.0);
-  TH1F* hDecLenErr = new TH1F("hDecLenErr", "decay length error", 100, 0., 1.0);
-  TH1F* hDecLenXYErr = new TH1F("hDecLenXYErr", "decay length XY error", 100, 0., 1.0);
-  TH1F* hCovPVXX = new TH1F("hCovPVXX", "XX element of PV cov. matrix", 100, 0., 1.0e-4);
-  TH1F* hCovSVXX = new TH1F("hCovSVXX", "XX element of SV cov. matrix", 100, 0., 0.2);
-
-  TH1F* hjetpt = new TH1F("hjetpt", " ; pt jet (#GeV) ; Entries", 100, 0., 100.);
-  TH1F* hjetzg = new TH1F("hjetzg", " ; jet zg ; Entries", 100, 0., 100.);
-  TH1F* hjetrg = new TH1F("hjetrrg", " ; jet rg ; Entries", 100, 0., 100.);
-  TH1F* hjetnsd = new TH1F("hjetnsd", " ; jet nsd ; Entries", 100, 0., 100.);
+  TH1F* hd0d0 = new TH1F("hd0d0", "product of dca xy to prim. vertex (cm^{2})", 100, -1.0, 1.0);
 
   AliESDtrackCuts* esdTrackCuts = new AliESDtrackCuts("AliESDtrackCuts", "default");
   esdTrackCuts->SetPtRange(ptmintrack, 1.e10);
@@ -432,7 +593,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
 
   Double_t d03[3] = {0., 0., 0.};
   AliAODRecoDecay* rd4massCalc3 = new AliAODRecoDecay(0x0, 3, 1, d03);
-  Double_t covMatrix[6];
 
   for (Int_t iEvent = 0; iEvent < tree->GetEntries(); iEvent++) {
     tree->GetEvent(iEvent);
@@ -467,7 +627,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
 
     Double_t fBzkG = (Double_t)esd->GetMagneticField();
 
-    
     // Apply single track cuts and flag them
     UChar_t* status = new UChar_t[totTracks];
     for (Int_t iTrack = 0; iTrack < totTracks; iTrack++) {
@@ -511,7 +670,7 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
 
         twoTrackArray->AddAt(track_p0, 0);
         twoTrackArray->AddAt(track_n0, 1);
-        AliESDVertex* trkv = ReconstructSecondaryVertex(vt, twoTrackArray, primvtx, d_maxr);
+        AliESDVertex* trkv = ReconstructSecondaryVertex(vt, twoTrackArray, primvtx);
         if (trkv == 0x0) {
           twoTrackArray->Clear();
           continue;
@@ -527,111 +686,25 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
         double decaylength = TMath::Sqrt(deltax * deltax + deltay * deltay + deltaz * deltaz);
         double decaylengthxy = TMath::Sqrt(deltax * deltax + deltay * deltay);
 
+        hdecayxyz->Fill(decaylength);
+        hdecayxy->Fill(decaylengthxy);
+
         AliAODVertex* vertexAOD = ConvertToAODVertex(trkv);
         delete trkv;
         AliAODRecoDecayHF2Prong* the2Prong = Make2Prong(twoTrackArray, vertexAOD, fBzkG);
-        the2Prong->SetOwnPrimaryVtx(vertexAODp);
+	the2Prong->SetOwnPrimaryVtx(vertexAODp);	
 
-        Int_t twoProngSelection = 3;
-        if (selectD0 + selectD0bar > 0)
-          twoProngSelection = TwoProngSelectionCuts(the2Prong, candpTMin, candpTMax);
+	Int_t twoProngSelection = TwoProngSelection(the2Prong, respTPC, respTOF, track_p0, track_n0);
         Double_t m0 = the2Prong->InvMassD0();
         Double_t m0b = the2Prong->InvMassD0bar();
-        if (twoProngSelection > 0) {
-          if (selectD0 == 0 || twoProngSelection == 1 || twoProngSelection == 3) hmass0->Fill(m0);
-          if (selectD0bar == 0 || twoProngSelection == 2 || twoProngSelection == 3) hmass0->Fill(m0b);
-          hdecayxyz->Fill(decaylength);
-          hdecayxy->Fill(decaylengthxy);
-          hptD0->Fill(the2Prong->Pt());
-          hptprong0->Fill(the2Prong->PtProng(0));
-          hptprong1->Fill(the2Prong->PtProng(1));
-          hd0->Fill(the2Prong->Getd0Prong(0));
-          hd0->Fill(the2Prong->Getd0Prong(1));
-          hd0d0->Fill(the2Prong->Prodd0d0());
-          hImpParErr->Fill(the2Prong->Getd0errProng(0));
-          hImpParErr->Fill(the2Prong->Getd0errProng(1));
-          hDecLenErr->Fill(the2Prong->DecayLengthError());
-          hDecLenXYErr->Fill(the2Prong->DecayLengthXYError());
-          the2Prong->GetPrimaryVtx()->GetCovMatrix(covMatrix);
-          hCovPVXX->Fill(covMatrix[0]);
-          the2Prong->GetSecondaryVtx()->GetCovMatrix(covMatrix);
-          hCovSVXX->Fill(covMatrix[0]);
-
-	  AliFJWrapper *fFastJetWrapper;
-	  fFastJetWrapper = new AliFJWrapper("fFastJetWrapper","fFastJetWrapper");
-	  fFastJetWrapper->Clear();
-	  fFastJetWrapper->SetR(0.4); 
-	  fFastJetWrapper->SetAlgorithm(fastjet::JetAlgorithm::antikt_algorithm);
-	  fFastJetWrapper->SetRecombScheme(fastjet::RecombinationScheme::E_scheme);
-	  fFastJetWrapper->SetStrategy(fastjet::Strategy::Best);
-	  fFastJetWrapper->SetGhostArea(0.005); 
-	  fFastJetWrapper->SetAreaType(fastjet::AreaType::passive_area);
-
-
-	  bool isHFJet=false;
-	  fFastJetWrapper->Clear();
-	  for (Int_t iTrack = 0; iTrack < totTracks; iTrack++) {
-	    AliESDtrack* track = esd->GetTrack(iTrack);
-	    if (track->Pt() >= 0.15 || TMath::Abs(track->Eta()) < 0.9){
-	      if (iTrack==iNegTrack_0 || iTrack==iPosTrack_0) continue;
-	      fFastJetWrapper->AddInputVector(track->Px(), track->Py(), track->Pz(), TMath::Sqrt(track->P()*track->P()+0.13957*0.13957),iTrack+2);
-	    }
-	  }
-	  fFastJetWrapper->AddInputVector(the2Prong->Px(), the2Prong->Py(), the2Prong->Pz(), the2Prong->ED0(),1);
-
-	  fFastJetWrapper->Run();
-	  std::vector<fastjet::PseudoJet> jets = fFastJetWrapper->GetInclusiveJets();
-	  for (Int_t ijet=0; ijet<jets.size(); ijet++){
-	    isHFJet=false;
-	    fastjet::PseudoJet jet = jets[ijet];
-	    if (jet.pt() <= 0.15 || jet.perp() > 1000.0 || TMath::Abs(jet.eta()) >= 0.5) continue;
-	    std::vector<fastjet::PseudoJet> constituents(fFastJetWrapper->GetJetConstituents(ijet));
-	    for (Int_t iconstituent=0; iconstituent<constituents.size(); iconstituent++){
-	      if (constituents[iconstituent].user_index()==1) isHFJet=true;
-	      break;
-	    }
-	    if(!isHFJet) continue;
-	    hjetpt->Fill(jet.pt());
-	    fastjet::JetDefinition subJetDef(fastjet::JetAlgorithm::cambridge_algorithm , 0.4*2.5,fastjet::RecombinationScheme::E_scheme, fastjet::Best);
-	    try{
-	      fastjet::ClusterSequence reclusterSeq(constituents, subJetDef);
-	      std::vector<fastjet::PseudoJet> reclusteredJet =  reclusterSeq.inclusive_jets(0.0);
-	      reclusteredJet = sorted_by_pt(reclusteredJet);
-         
-	      fastjet::PseudoJet daughterSubJet = reclusteredJet[0];
-	      fastjet::PseudoJet parentSubJet1; 
-	      fastjet::PseudoJet parentSubJet2;
-
-	      Float_t zg=-1.0,rg=-1.0;
-	      Int_t nsd=0;
-	      bool softDropped=false;
-	      bool isHFSubJet=false;
-	      std::vector<fastjet::PseudoJet> constituentsSubJet;
-	      while(daughterSubJet.has_parents(parentSubJet1,parentSubJet2)){
-		isHFSubJet=false;
-		constituentsSubJet=parentSubJet1.constituents();
-		for (Int_t iconstituent=0; iconstituent<constituentsSubJet.size(); iconstituent++){
-		  if (constituentsSubJet[iconstituent].user_index()==1) isHFSubJet=true;
-		}
-		if (isHFSubJet==false) std::swap(parentSubJet1,parentSubJet2);
-		zg=parentSubJet2.perp()/(parentSubJet1.perp()+parentSubJet2.perp());
-		rg=parentSubJet1.delta_R(parentSubJet2);
-
-		if (zg >= 0.1*TMath::Power(rg/0.4,0.0)){
-		  if(!softDropped){
-		    hjetzg->Fill(zg);
-		    hjetrg->Fill(rg);
-		    softDropped=true;
-		  }
-		  nsd++;
-		}
-		daughterSubJet=parentSubJet1;
-	      }
-	      hjetnsd->Fill(nsd);
-	    }catch (fastjet::Error) {}
-	  }
-	  delete fFastJetWrapper;
-        }
+        if (twoProngSelection==1 || twoProngSelection==3) hmass0->Fill(m0);
+        if (twoProngSelection==2 || twoProngSelection==3) hmass0->Fill(m0b);
+        hptD0->Fill(the2Prong->Pt());
+        hptprong0->Fill(the2Prong->PtProng(0));
+        hptprong1->Fill(the2Prong->PtProng(1));
+        hd0->Fill(the2Prong->Getd0Prong(0));
+        hd0->Fill(the2Prong->Getd0Prong(1));
+        hd0d0->Fill(the2Prong->Prodd0d0());
         delete the2Prong;
         delete vertexAOD;
         //  printf(" masses = %f %f\n",TMath::Max(m0,m0b),TMath::Min(m0,m0b));
@@ -654,7 +727,7 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
               threeTrackArray->Clear();
               continue;
             }
-            AliESDVertex* trkv3 = ReconstructSecondaryVertex(vt, threeTrackArray, primvtx, d_maxr);
+            AliESDVertex* trkv3 = ReconstructSecondaryVertex(vt, threeTrackArray, primvtx);
             if (trkv3 == 0x0) {
               threeTrackArray->Clear();
               continue;
@@ -665,9 +738,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
             if (massSel & (1 << kbitDplus)) {
               Double_t mp = the3Prong->InvMassDplus();
               hmassP->Fill(mp);
-              hvx3->Fill(trkv3->GetX());
-              hvy3->Fill(trkv3->GetY());
-              hvz3->Fill(trkv3->GetZ());
             }
             delete trkv3;
             delete the3Prong;
@@ -692,7 +762,7 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
               threeTrackArray->Clear();
               continue;
             }
-            AliESDVertex* trkv3 = ReconstructSecondaryVertex(vt, threeTrackArray, primvtx, d_maxr);
+            AliESDVertex* trkv3 = ReconstructSecondaryVertex(vt, threeTrackArray, primvtx);
             if (trkv3 == 0x0) {
               threeTrackArray->Clear();
               continue;
@@ -726,9 +796,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
   hvx->Write();
   hvy->Write();
   hvz->Write();
-  hvx3->Write();
-  hvy3->Write();
-  hvz3->Write();
   hpt_nocuts->Write();
   htgl_nocuts->Write();
   hpt_cuts->Write();
@@ -748,16 +815,6 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
   hptprong1->Write();
   hd0->Write();
   hd0d0->Write();
-  hImpParErr->Write();
-  hDecLenErr->Write();
-  hDecLenXYErr->Write();
-  hCovPVXX->Write();
-  hCovSVXX->Write();
-
-  hjetpt->Write();
-  hjetzg->Write();
-  hjetrg->Write();
-  hjetnsd->Write();
 
   fout->Close();
   return 0;

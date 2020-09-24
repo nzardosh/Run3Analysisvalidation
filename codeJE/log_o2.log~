@@ -1,0 +1,438 @@
+tmpscript.sh: line 2: o2-analysis-pidTOF-task: command not found
+tmpscript.sh: line 2: o2-analysis-pidTPC-task: command not found
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::CrossInfo found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackAuxPar found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackParCov found in libPWGLFnuclex  is already in libO2ReconstructionDataFormats.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::CircleXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::IntervalXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter2 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter3 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<2,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<3,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::CrossInfo found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackAuxPar found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackParCov found in libPWGLFnuclex  is already in libO2ReconstructionDataFormats.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::CircleXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::IntervalXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter2 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter3 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<2,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<3,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolator found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular::KDTreeNode found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorIrregularD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver::MGParameters found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCSpaceCharge3DCalc found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolator found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular::KDTreeNode found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorIrregularD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver::MGParameters found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCSpaceCharge3DCalc found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[INFO] Initialising O2 Data Processing Layer
+Cleanup called with session id 'dpl_49201', translating to shared memory id 'e1810a5c'
+Cleaning up for shared memory id 'e1810a5c'...
+Did not find 'fmq_e1810a5c_mng' shared memory segment. No regions to cleanup.
+Did not remove 'fmq_e1810a5c_main'. Already removed?
+Did not remove 'fmq_e1810a5c_mtx'. Already removed?
+Did not remove 'fmq_e1810a5c_cv'. Already removed?
+
+[INFO] O2 Data Processing Layer initialised. We brake for nobody.
+[INFO] Optimised build. O2DEBUG / LOG(DEBUG) / LOGF(DEBUG) / assert statement will not be shown.
+[INFO] Redeployment of configuration asked.
+[INFO] Starting internal-dpl-clock on pid 49261
+[INFO] Starting internal-dpl-aod-reader on pid 49262
+[INFO] Starting internal-dpl-aod-spawner on pid 49263
+[INFO] Starting vertexerhf-hfcandcreator2prong on pid 49264
+[INFO] Starting vertexerhf-hfselcandidate on pid 49265
+[INFO] Starting hf-taskdzero on pid 49266
+[INFO] Starting internal-dpl-global-analysis-file-sink on pid 49267
+[INFO] Redeployment of configuration done.
+[49265:vertexerhf-hfselcandidate]: [INFO] Spawing new device vertexerhf-hfselcandidate in process with pid 49265
+[49266:hf-taskdzero]: [INFO] Spawing new device hf-taskdzero in process with pid 49266
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] 
+[49265:vertexerhf-hfselcandidate]:       ______      _    _______  _________ 
+[49265:vertexerhf-hfselcandidate]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.4.21
+[49265:vertexerhf-hfselcandidate]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[49265:vertexerhf-hfselcandidate]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[49265:vertexerhf-hfselcandidate]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2020 GSI
+[49265:vertexerhf-hfselcandidate]: 
+[49266:hf-taskdzero]: [19:15:07][INFO] 
+[49266:hf-taskdzero]:       ______      _    _______  _________ 
+[49266:hf-taskdzero]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.4.21
+[49266:hf-taskdzero]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[49266:hf-taskdzero]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[49266:hf-taskdzero]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2020 GSI
+[49266:hf-taskdzero]: 
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] Starting FairMQ state machine --> IDLE
+[49266:hf-taskdzero]: [19:15:07][STATE] Starting FairMQ state machine --> IDLE
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service timesliceindex
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service monitoring
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service timesliceindex
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service monitoring
+[49265:vertexerhf-hfselcandidate]: 2020-08-10 19:15:07	[1;49mStdOut backend initialized[0m
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service infologger-contex
+[49266:hf-taskdzero]: 2020-08-10 19:15:07	[1;49mStdOut backend initialized[0m
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service infologger-contex
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service infologger
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service infologger
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service configuration
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service configuration
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service control
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service control
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service localrootfile
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service localrootfile
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service parallel
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service callbacks
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service datarelayer
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service parallel
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service callbacks
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service datarelayer
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service data-processing-stats
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service fairmq-backend
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service arrow-backend
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service string-backend
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] Declaring service raw-backend
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service data-processing-stats
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service fairmq-backend
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service arrow-backend
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service string-backend
+[49266:hf-taskdzero]: [19:15:07][INFO] Declaring service raw-backend
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] IDLE ---> INITIALIZING DEVICE
+[49265:vertexerhf-hfselcandidate]: 2020-08-10 19:15:07	[1;49mBuffering enabled (100)[0m
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] INITIALIZED ---> BINDING
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] BINDING ---> BOUND
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] BOUND ---> CONNECTING
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] CONNECTING ---> DEVICE READY
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] DEVICE READY ---> INITIALIZING TASK
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] INITIALIZING TASK ---> READY
+[49265:vertexerhf-hfselcandidate]: [19:15:07][STATE] READY ---> RUNNING
+[49265:vertexerhf-hfselcandidate]: [19:15:07][INFO] DEVICE: Running...
+[49266:hf-taskdzero]: [19:15:07][STATE] IDLE ---> INITIALIZING DEVICE
+[49266:hf-taskdzero]: 2020-08-10 19:15:07	[1;49mBuffering enabled (100)[0m
+[49266:hf-taskdzero]: [19:15:07][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[49266:hf-taskdzero]: [19:15:07][STATE] INITIALIZED ---> BINDING
+[49266:hf-taskdzero]: [19:15:07][STATE] BINDING ---> BOUND
+[49266:hf-taskdzero]: [19:15:07][STATE] BOUND ---> CONNECTING
+[49266:hf-taskdzero]: [19:15:07][STATE] CONNECTING ---> DEVICE READY
+[49266:hf-taskdzero]: [19:15:07][STATE] DEVICE READY ---> INITIALIZING TASK
+[49266:hf-taskdzero]: [19:15:07][STATE] INITIALIZING TASK ---> READY
+[49266:hf-taskdzero]: [19:15:07][STATE] READY ---> RUNNING
+[49266:hf-taskdzero]: [19:15:07][INFO] DEVICE: Running...
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::CrossInfo found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackAuxPar found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackParCov found in libPWGLFnuclex  is already in libO2ReconstructionDataFormats.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::CircleXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::IntervalXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter2 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter3 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<2,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<3,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolator found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular::KDTreeNode found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorIrregularD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver::MGParameters found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCSpaceCharge3DCalc found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::CrossInfo found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackAuxPar found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackParCov found in libPWGLFnuclex  is already in libO2ReconstructionDataFormats.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::CircleXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::IntervalXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter2 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter3 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<2,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<3,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::CrossInfo found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackAuxPar found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackParCov found in libPWGLFnuclex  is already in libO2ReconstructionDataFormats.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::CircleXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::IntervalXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter2 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter3 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<2,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<3,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolator found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular::KDTreeNode found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorIrregularD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver::MGParameters found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49263:internal-dpl-aod-spawner]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCSpaceCharge3DCalc found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: [INFO] Spawing new device internal-dpl-clock in process with pid 49261
+[49261:internal-dpl-clock]: [19:15:07][INFO] 
+[49261:internal-dpl-clock]:       ______      _    _______  _________ 
+[49261:internal-dpl-clock]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.4.21
+[49261:internal-dpl-clock]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[49261:internal-dpl-clock]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[49261:internal-dpl-clock]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2020 GSI
+[49261:internal-dpl-clock]: 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolator found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular::KDTreeNode found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorIrregularD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver::MGParameters found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCSpaceCharge3DCalc found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49261:internal-dpl-clock]: [19:15:07][STATE] Starting FairMQ state machine --> IDLE
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service timesliceindex
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service monitoring
+[49261:internal-dpl-clock]: 2020-08-10 19:15:07	[1;49mStdOut backend initialized[0m
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service infologger-contex
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service infologger
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service configuration
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service control
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service localrootfile
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service parallel
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service callbacks
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service datarelayer
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service data-processing-stats
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service fairmq-backend
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service arrow-backend
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service string-backend
+[49261:internal-dpl-clock]: [19:15:07][INFO] Declaring service raw-backend
+[49261:internal-dpl-clock]: [19:15:07][STATE] IDLE ---> INITIALIZING DEVICE
+[49261:internal-dpl-clock]: 2020-08-10 19:15:07	[1;49mBuffering enabled (100)[0m
+[49261:internal-dpl-clock]: [19:15:07][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[49261:internal-dpl-clock]: [19:15:07][STATE] INITIALIZED ---> BINDING
+[49261:internal-dpl-clock]: [19:15:07][STATE] BINDING ---> BOUND
+[49261:internal-dpl-clock]: [19:15:07][STATE] BOUND ---> CONNECTING
+[49261:internal-dpl-clock]: [19:15:07][STATE] CONNECTING ---> DEVICE READY
+[49261:internal-dpl-clock]: [19:15:07][STATE] DEVICE READY ---> INITIALIZING TASK
+[49261:internal-dpl-clock]: [19:15:07][STATE] INITIALIZING TASK ---> READY
+[49261:internal-dpl-clock]: [19:15:07][STATE] READY ---> RUNNING
+[49261:internal-dpl-clock]: [19:15:07][INFO] DEVICE: Running...
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::CrossInfo found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackAuxPar found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackParCov found in libPWGLFnuclex  is already in libO2ReconstructionDataFormats.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::CircleXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::IntervalXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter2 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter3 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<2,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<3,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::CrossInfo found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackAuxPar found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::track::TrackParCov found in libPWGLFnuclex  is already in libO2ReconstructionDataFormats.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::CircleXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::utils::IntervalXY found in libPWGLFnuclex  is already in libO2MathUtils.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter2 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitter3 found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<2,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  o2::vertexing::DCAFitterN<3,o2::track::TrackParCov> found in libPWGLFnuclex  is already in libO2DetectorsVertexing.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolator found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular::KDTreeNode found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorIrregularD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver::MGParameters found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49264:vertexerhf-hfcandcreator2prong]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCSpaceCharge3DCalc found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49263:internal-dpl-aod-spawner]: [INFO] Spawing new device internal-dpl-aod-spawner in process with pid 49263
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] 
+[49263:internal-dpl-aod-spawner]:       ______      _    _______  _________ 
+[49263:internal-dpl-aod-spawner]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.4.21
+[49263:internal-dpl-aod-spawner]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[49263:internal-dpl-aod-spawner]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[49263:internal-dpl-aod-spawner]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2020 GSI
+[49263:internal-dpl-aod-spawner]: 
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] Starting FairMQ state machine --> IDLE
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service timesliceindex
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service monitoring
+[49263:internal-dpl-aod-spawner]: 2020-08-10 19:15:07	[1;49mStdOut backend initialized[0m
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service infologger-contex
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service infologger
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service configuration
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service control
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service localrootfile
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service parallel
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service callbacks
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service datarelayer
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service data-processing-stats
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service fairmq-backend
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service arrow-backend
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service string-backend
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] Declaring service raw-backend
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] IDLE ---> INITIALIZING DEVICE
+[49263:internal-dpl-aod-spawner]: 2020-08-10 19:15:07	[1;49mBuffering enabled (100)[0m
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] INITIALIZED ---> BINDING
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] BINDING ---> BOUND
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] BOUND ---> CONNECTING
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] CONNECTING ---> DEVICE READY
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] DEVICE READY ---> INITIALIZING TASK
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] INITIALIZING TASK ---> READY
+[49263:internal-dpl-aod-spawner]: [19:15:07][STATE] READY ---> RUNNING
+[49263:internal-dpl-aod-spawner]: [19:15:07][INFO] DEVICE: Running...
+[49267:internal-dpl-global-analysis-file-sink]: [INFO] Spawing new device internal-dpl-global-analysis-file-sink in process with pid 49267
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] 
+[49267:internal-dpl-global-analysis-file-sink]:       ______      _    _______  _________ 
+[49267:internal-dpl-global-analysis-file-sink]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.4.21
+[49267:internal-dpl-global-analysis-file-sink]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[49267:internal-dpl-global-analysis-file-sink]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[49267:internal-dpl-global-analysis-file-sink]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2020 GSI
+[49267:internal-dpl-global-analysis-file-sink]: 
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] Starting FairMQ state machine --> IDLE
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service timesliceindex
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service monitoring
+[49267:internal-dpl-global-analysis-file-sink]: 2020-08-10 19:15:07	[1;49mStdOut backend initialized[0m
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service infologger-contex
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service infologger
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service configuration
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service control
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service localrootfile
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service parallel
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service callbacks
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service datarelayer
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service data-processing-stats
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service fairmq-backend
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service arrow-backend
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service string-backend
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] Declaring service raw-backend
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolator found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPC3DCylindricalInterpolatorIrregular::KDTreeNode found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCLookUpTable3DInterpolatorIrregularD found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCPoissonSolver::MGParameters found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49262:internal-dpl-aod-reader]: Warning in <TInterpreter::ReadRootmapFile>: class  AliTPCSpaceCharge3DCalc found in libAliTPCSpaceChargeBase  is already in libO2TPCSpaceChargeBase.so 
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] IDLE ---> INITIALIZING DEVICE
+[49267:internal-dpl-global-analysis-file-sink]: 2020-08-10 19:15:07	[1;49mBuffering enabled (100)[0m
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] INITIALIZED ---> BINDING
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] BINDING ---> BOUND
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] BOUND ---> CONNECTING
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] CONNECTING ---> DEVICE READY
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] DEVICE READY ---> INITIALIZING TASK
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] INITIALIZING TASK ---> READY
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][STATE] READY ---> RUNNING
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:07][INFO] DEVICE: Running...
+[49264:vertexerhf-hfcandcreator2prong]: [INFO] Spawing new device vertexerhf-hfcandcreator2prong in process with pid 49264
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] 
+[49264:vertexerhf-hfcandcreator2prong]:       ______      _    _______  _________ 
+[49264:vertexerhf-hfcandcreator2prong]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.4.21
+[49264:vertexerhf-hfcandcreator2prong]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[49264:vertexerhf-hfcandcreator2prong]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[49264:vertexerhf-hfcandcreator2prong]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2020 GSI
+[49264:vertexerhf-hfcandcreator2prong]: 
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] Starting FairMQ state machine --> IDLE
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service timesliceindex
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service monitoring
+[49264:vertexerhf-hfcandcreator2prong]: 2020-08-10 19:15:07	[1;49mStdOut backend initialized[0m
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service infologger-contex
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service infologger
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service configuration
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service control
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service localrootfile
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service parallel
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service callbacks
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service datarelayer
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service data-processing-stats
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service fairmq-backend
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service arrow-backend
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service string-backend
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] Declaring service raw-backend
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] IDLE ---> INITIALIZING DEVICE
+[49264:vertexerhf-hfcandcreator2prong]: 2020-08-10 19:15:07	[1;49mBuffering enabled (100)[0m
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] INITIALIZED ---> BINDING
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] BINDING ---> BOUND
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] BOUND ---> CONNECTING
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] CONNECTING ---> DEVICE READY
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] DEVICE READY ---> INITIALIZING TASK
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] INITIALIZING TASK ---> READY
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][STATE] READY ---> RUNNING
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:07][INFO] DEVICE: Running...
+[49262:internal-dpl-aod-reader]: [INFO] Spawing new device internal-dpl-aod-reader in process with pid 49262
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] 
+[49262:internal-dpl-aod-reader]:       ______      _    _______  _________ 
+[49262:internal-dpl-aod-reader]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.4.21
+[49262:internal-dpl-aod-reader]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[49262:internal-dpl-aod-reader]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[49262:internal-dpl-aod-reader]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2020 GSI
+[49262:internal-dpl-aod-reader]: 
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] Starting FairMQ state machine --> IDLE
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service timesliceindex
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service monitoring
+[49262:internal-dpl-aod-reader]: 2020-08-10 19:15:07	[1;49mStdOut backend initialized[0m
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service infologger-contex
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service infologger
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service configuration
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service control
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service localrootfile
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service parallel
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service callbacks
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service datarelayer
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service data-processing-stats
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service fairmq-backend
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service arrow-backend
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service string-backend
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] Declaring service raw-backend
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] IDLE ---> INITIALIZING DEVICE
+[49262:internal-dpl-aod-reader]: 2020-08-10 19:15:07	[1;49mBuffering enabled (100)[0m
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] INITIALIZED ---> BINDING
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] BINDING ---> BOUND
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] BOUND ---> CONNECTING
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] CONNECTING ---> DEVICE READY
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] DEVICE READY ---> INITIALIZING TASK
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] INITIALIZING TASK ---> READY
+[49262:internal-dpl-aod-reader]: [19:15:07][STATE] READY ---> RUNNING
+[49262:internal-dpl-aod-reader]: [19:15:07][INFO] DEVICE: Running...
+[49262:internal-dpl-aod-reader]: [19:15:07][ERROR] Couldn't get TTree "HFTRACKIDXP2" from "AO2D.root"
+[INFO] QUIT_REQUESTED
+[49261:internal-dpl-clock]: [19:15:23][INFO] Received device shutdown request (signal 15).
+[49261:internal-dpl-clock]: [19:15:23][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[49263:internal-dpl-aod-spawner]: [19:15:23][INFO] Received device shutdown request (signal 15).
+[49263:internal-dpl-aod-spawner]: [19:15:23][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][INFO] Received device shutdown request (signal 15).
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[49266:hf-taskdzero]: [19:15:23][INFO] Received device shutdown request (signal 15).
+[49266:hf-taskdzero]: [19:15:23][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[49265:vertexerhf-hfselcandidate]: [19:15:23][INFO] Received device shutdown request (signal 15).
+[49265:vertexerhf-hfselcandidate]: [19:15:23][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:23][INFO] Received device shutdown request (signal 15).
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:23][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[49263:internal-dpl-aod-spawner]: [19:15:23][STATE] RUNNING ---> READY
+[49261:internal-dpl-clock]: [19:15:23][STATE] RUNNING ---> READY
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:23][STATE] RUNNING ---> READY
+[49265:vertexerhf-hfselcandidate]: [19:15:23][STATE] RUNNING ---> READY
+[49266:hf-taskdzero]: [19:15:23][STATE] RUNNING ---> READY
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][STATE] RUNNING ---> READY
+[49265:vertexerhf-hfselcandidate]: [19:15:23][STATE] READY ---> RESETTING TASK
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][STATE] READY ---> RESETTING TASK
+[49265:vertexerhf-hfselcandidate]: [19:15:23][STATE] RESETTING TASK ---> DEVICE READY
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:23][STATE] READY ---> RESETTING TASK
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][STATE] RESETTING TASK ---> DEVICE READY
+[49263:internal-dpl-aod-spawner]: [19:15:23][STATE] READY ---> RESETTING TASK
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:23][STATE] RESETTING TASK ---> DEVICE READY
+[49265:vertexerhf-hfselcandidate]: [19:15:23][STATE] DEVICE READY ---> RESETTING DEVICE
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][STATE] DEVICE READY ---> RESETTING DEVICE
+[49264:vertexerhf-hfcandcreator2prong]: [19:15:23][STATE] DEVICE READY ---> RESETTING DEVICE
+[49263:internal-dpl-aod-spawner]: [19:15:23][STATE] RESETTING TASK ---> DEVICE READY
+[49261:internal-dpl-clock]: [19:15:23][STATE] READY ---> RESETTING TASK
+[49263:internal-dpl-aod-spawner]: [19:15:23][STATE] DEVICE READY ---> RESETTING DEVICE
+[49261:internal-dpl-clock]: [19:15:23][STATE] RESETTING TASK ---> DEVICE READY
+[49266:hf-taskdzero]: [19:15:23][STATE] READY ---> RESETTING TASK
+[49261:internal-dpl-clock]: [19:15:23][STATE] DEVICE READY ---> RESETTING DEVICE
+[49266:hf-taskdzero]: [19:15:23][STATE] RESETTING TASK ---> DEVICE READY
+[49266:hf-taskdzero]: [19:15:23][STATE] DEVICE READY ---> RESETTING DEVICE
+[49265:vertexerhf-hfselcandidate]: [19:15:23][STATE] RESETTING DEVICE ---> IDLE
+[49265:vertexerhf-hfselcandidate]: [19:15:23][STATE] IDLE ---> EXITING
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][STATE] RESETTING DEVICE ---> IDLE
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][STATE] IDLE ---> EXITING
+[49265:vertexerhf-hfselcandidate]: [19:15:23][STATE] Exiting FairMQ state machine
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][STATE] Exiting FairMQ state machine
+[49265:vertexerhf-hfselcandidate]: [19:15:23][INFO] Process 49265 is exiting.
+[49267:internal-dpl-global-analysis-file-sink]: [19:15:23][INFO] Process 49267 is exiting.

@@ -8,8 +8,8 @@ Int_t Compare(TString filerun3 = "AnalysisResults.root", TString filerun1 = "Ver
   TFile* fRun3 = new TFile(filerun3.Data());
   TFile* fRun1 = new TFile(filerun1.Data());
 
-  const int nhisto = 16;
-  const int nhisto_2prong = 15;
+  const int nhisto = 15;
+  const int nhisto_2prong = 14;
   TString histonameRun1[nhisto] = {"hpt_nocuts",
                                    "hpt_cuts",
                                    "hdcatoprimxy_cuts",
@@ -24,14 +24,13 @@ Int_t Compare(TString filerun3 = "AnalysisResults.root", TString filerun1 = "Ver
                                    "hd0",
                                    "hd0d0",
                                    "hmass0",
-				   "hjetpt",
                                    "hmassP"};
                                    //"hImpParErr",
                                    //"hDecLenErr",
                                    //"hDecLenXYErr",
                                    //"hCovPVXX",
                                    //"hCovSVXX"
-				   // "hvx3",
+                                   //"hvx3",
                                    //"hvy3",
                                    //"hvz3"};
   TString histonameRun3[nhisto] = {"hf-produce-sel-track/hpt_nocuts",
@@ -48,7 +47,6 @@ Int_t Compare(TString filerun3 = "AnalysisResults.root", TString filerun1 = "Ver
                                    "hf-task-d0/hd0",
                                    "hf-task-d0/hd0d0",
                                    "hf-task-d0/hmass",
-				   "jet-finder-hf/h_jet_pt",
                                    "hf-track-index-skims-creator/hmass3"};
                                    //"hf-task-d0/hImpParErr",
                                    //"hf-task-d0/hDecLenErr",
@@ -72,8 +70,7 @@ Int_t Compare(TString filerun3 = "AnalysisResults.root", TString filerun1 = "Ver
                            "d0 (cm)",
                            "d0d0 (cm^{2})",
                            "2-prong mass (#pi K)",
-			   "#it{p}_{T,jet}",
-                           "3-prong mass"};
+                           "3-prong mass (#pi K #pi)"};
                            //"impact parameter error",
                            //"decay length error",
                            //"decay length XY error",
@@ -82,7 +79,7 @@ Int_t Compare(TString filerun3 = "AnalysisResults.root", TString filerun1 = "Ver
                            //"secondary vtx x - 3prong",
                            //"secondary vtx y - 3prong",
                            //"secondary vtx z - 3prong"};
-  int rebin[nhisto] = {2, 2, 2, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2};
+  int rebin[nhisto] = {2, 2, 2, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 5, 5, 5};
   TH1F* hRun1[nhisto];
   TH1F* hRun3[nhisto];
   TH1F* hRatio[nhisto];
@@ -103,7 +100,7 @@ Int_t Compare(TString filerun3 = "AnalysisResults.root", TString filerun1 = "Ver
   Float_t marginHigh = 0.05;
   Float_t marginLow = 0.05;
   Float_t k = 1. - marginHigh - marginLow;
-  bool LogScale = true;
+  bool LogScale = false;
   // Ratio plot vertical margins
   Float_t marginRHigh = 0.05;
   Float_t marginRLow = 0.05;
