@@ -55,7 +55,7 @@ fi
 
 if [ $CASE -eq 5 ]; then
   INPUTDIR="/mnt/temp/Run3data_Vit/LHC18a4a2_cent/282341"
-  STRING="2*/AliESDs.root"
+  STRING="00*/AliESDs.root"
 fi
 
 #INPUTDIR="/data/Run3data/output" #K0* MC injected
@@ -169,6 +169,7 @@ if [ $DORUN3 -eq 1 ]; then
   O2EXEC_JETFINDERHADRONRECOIL="o2-analysis-jet-finder-hadron-recoil $O2ARGS_JETFINDERHADRONRECOIL"
   #O2EXEC="$O2EXEC_SKIM | $O2EXEC_PIDTPC | $O2EXEC_PIDTOF | $O2EXEC_CAND | $O2EXEC_SEL | $O2EXEC_TASK -b"
   O2EXEC="$O2EXEC_JETFINDER | $O2EXEC_JETSUBSTRUCTURE | $O2EXEC_JETFINDERHADRONRECOIL -b"
+  #O2EXEC="$O2EXEC_JETFINDER | $O2EXEC_JETSUBSTRUCTURE  -b" 
   O2SCRIPT="script_o2_jet.sh"
   cat << EOF > $O2SCRIPT # Create a temporary script with the full O2 commands.
 #!/bin/bash

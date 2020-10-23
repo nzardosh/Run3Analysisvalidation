@@ -21,7 +21,7 @@ Bool_t SingleTrkCuts(AliESDtrack* trk, AliESDtrackCuts* esdTrackCuts, AliESDVert
   if (!trk->PropagateToDCA(fV1, fBzkG, kVeryBig))
     return kFALSE;
   trk->RelateToVertex(fV1, fBzkG, kVeryBig);
-  return esdTrackCuts->AcceptTrack(trk);
+  return esdTrackCuts->AcceptTrack(trk); 
 }
 
 Bool_t SingleTrkCutsSimple(AliESDtrack* trk, Int_t minclutpc, int ptmintrack, double dcatoprimxymin, AliESDVertex* fV1, Double_t fBzkG)
@@ -201,7 +201,7 @@ Int_t JetFindingRun1(TString esdfile = "AliESDs.root",
     std::vector<fastjet::PseudoJet> jets = fFastJetWrapper->GetInclusiveJets();
     for (Int_t ijet=0; ijet<jets.size(); ijet++){
       fastjet::PseudoJet jet = jets[ijet];
-      if (jet.pt() <= 0.15 || jet.perp() > 1000.0 || TMath::Abs(jet.eta()) >= 0.5) continue;
+      if (jet.pt() < 0.15 || jet.perp() > 1000.0 || TMath::Abs(jet.eta()) >= 0.5) continue;
       hjet_pt->Fill(jet.pt());
       hjet_phi->Fill(jet.phi());
       hjet_eta->Fill(jet.eta());

@@ -13,7 +13,7 @@ DOCOMPARE=1   # Compare AliPhysics and O2 output.
 RUN5=0        # Use Run 5 input.
 CONVSEP=1     # Convert ESD files separately.
 PARALLELISE=0 # Parallelise O2 tasks.
-TWOPRONGSEL=0 # Apply D0 selection cuts.
+TWOPRONGSEL=1 # Apply D0 selection cuts.
 DEBUG=0       # Print out more information.
 
 # Default settings
@@ -59,7 +59,7 @@ fi
 
 if [ $CASE -eq 5 ]; then
   INPUTDIR="/mnt/temp/Run3data_Vit/LHC18a4a2_cent/282341"
-  STRING="001/AliESDs.root"
+  STRING="00*/AliESDs.root"
 fi
 
 #INPUTDIR="/data/Run3data/output" #K0* MC injected

@@ -7,16 +7,19 @@
         "step-value-enumeration": "1"
     },
     "jet-finder": {
+	"b_DoRhoAreaSub": "false",
+	"b_DoConstSub": "true"
     },
     "jet-substructure": {
-	"f_jetPtMin": "10.0",
+	"f_jetPtMin": "0.0",
 	"d_zCut": "0.1",
         "d_beta": "0.0",
-        "d_jetR": "0.4"
+        "d_jetR": "0.4",
+	"b_DoConstSub": "true"
     },
     "jet-finder-hadron-recoil": {
-	"f_trackTTMin": "8.0",
-	"f_trackTTMax": "9.0",
+	"f_trackTTMin": "15.0",
+	"f_trackTTMax": "30.0",
         "f_recoilWindow": "0.6"
     },
     "internal-dpl-aod-writer": {

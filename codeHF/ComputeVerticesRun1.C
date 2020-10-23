@@ -572,7 +572,7 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
 	  fFastJetWrapper->Clear();
 	  for (Int_t iTrack = 0; iTrack < totTracks; iTrack++) {
 	    AliESDtrack* track = esd->GetTrack(iTrack);
-	    if (track->Pt() >= 0.15 || TMath::Abs(track->Eta()) < 0.9){
+	    if (track->Pt() >= 0.15 && TMath::Abs(track->Eta()) < 0.9){
 	      if (iTrack==iNegTrack_0 || iTrack==iPosTrack_0) continue;
 	      fFastJetWrapper->AddInputVector(track->Px(), track->Py(), track->Pz(), TMath::Sqrt(track->P()*track->P()+0.13957*0.13957),iTrack+2);
 	    }
@@ -584,7 +584,7 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
 	  for (Int_t ijet=0; ijet<jets.size(); ijet++){
 	    isHFJet=false;
 	    fastjet::PseudoJet jet = jets[ijet];
-	    if (jet.pt() <= 0.15 || jet.perp() > 1000.0 || TMath::Abs(jet.eta()) >= 0.5) continue;
+	    if (jet.pt() < 0.15 || jet.perp() >= 1000.0 || TMath::Abs(jet.eta()) >= 0.5) continue;
 	    std::vector<fastjet::PseudoJet> constituents(fFastJetWrapper->GetJetConstituents(ijet));
 	    for (Int_t iconstituent=0; iconstituent<constituents.size(); iconstituent++){
 	      if (constituents[iconstituent].user_index()==1) isHFJet=true;
@@ -613,7 +613,7 @@ Int_t ComputeVerticesRun1(TString esdfile = "AliESDs.root",
 		for (Int_t iconstituent=0; iconstituent<constituentsSubJet.size(); iconstituent++){
 		  if (constituentsSubJet[iconstituent].user_index()==1) isHFSubJet=true;
 		}
-		if (isHFSubJet==false) std::swap(parentSubJet1,parentSubJet2);
+		if (!isHFSubJet) std::swap(parentSubJet1,parentSubJet2);
 		zg=parentSubJet2.perp()/(parentSubJet1.perp()+parentSubJet2.perp());
 		rg=parentSubJet1.delta_R(parentSubJet2);
 

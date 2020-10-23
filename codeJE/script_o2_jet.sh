@@ -1,2 +1,0 @@
-#!/bin/bash
-o2-analysis-jet-finder --shm-segment-size 16000000000 --configuration json:///home/nzardosh/Run3Analysisvalidation/codeJE/dpl-config_std.json | o2-analysis-jet-substructure --shm-segment-size 16000000000 --configuration json:///home/nzardosh/Run3Analysisvalidation/codeJE/dpl-config_std.json | o2-analysis-jet-finder-hadron-recoil --shm-segment-size 16000000000 --configuration json:///home/nzardosh/Run3Analysisvalidation/codeJE/dpl-config_std.json -b

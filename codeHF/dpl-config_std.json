@@ -48,8 +48,8 @@
         "d_nSigmaTOFCombined": "5.0"
     },
     "hf-task-d0": {
-        "d_selectionFlagD0": "1",
-        "d_selectionFlagD0bar": "1"
+        "d_selectionFlagD0": "0",
+        "d_selectionFlagD0bar": "0"
     },
     "jet-finder-hf": {
         "d_selectionFlagD0": "0",
