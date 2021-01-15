@@ -13,7 +13,7 @@ CLEAN=1
 # WARNING: This feature requires all development packages to be specified and added in the list LIST_PKG_DEV_SPECS! Builds of missing packages will be deleted!
 # WARNING: This feature executes "aliBuild build" for all development packages. If a package needs to be rebuilt, it will be rebuilt!
 # WARNING: Do not enable this if you need to keep several builds per development package (e.g. for different branches or commits)!
-PURGE_BUILDS=0
+PURGE_BUILDS=1
 
 # Print out an overview of the latest commits of repositories.
 PRINT_COMMITS=1
@@ -52,18 +52,18 @@ ALIPHYSICS_SPECS=("$ALIPHYSICS_NAME" $ALIPHYSICS_UPDATE "$ALIPHYSICS_DIR" "$ALIP
 
 # O2
 O2_NAME="O2"
-O2_UPDATE=1
+O2_UPDATE=0
 O2_DIR="$ALICE_DIR/O2"
 O2_REMOTE_MAIN="upstream"
 O2_REMOTE_FORK="origin"
 O2_BRANCH_MAIN="dev"
 O2_BUILD_OPT="--defaults o2"
-O2_BUILD=1
+O2_BUILD=0
 O2_SPECS=("$O2_NAME" $O2_UPDATE "$O2_DIR" "$O2_REMOTE_MAIN" "$O2_REMOTE_FORK" "$O2_BRANCH_MAIN" "$O2_BUILD_OPT" $O2_BUILD)
 
 # Run 3 validation
 RUN3VALIDATE_NAME="Run 3 validation"
-RUN3VALIDATE_UPDATE=1
+RUN3VALIDATE_UPDATE=0
 RUN3VALIDATE_DIR="$DIR_REPO"
 RUN3VALIDATE_REMOTE_MAIN="upstream"
 RUN3VALIDATE_REMOTE_FORK="origin"
